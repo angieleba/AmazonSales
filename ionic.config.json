@@ -1,5 +1,8 @@
 {
   "name": "amazon_sales",
-  "integrations": {},
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
   "type": "angular"
 }

@@ -1,0 +1,63 @@
+{
+"users" : [
+	{
+		"id" : "1", 
+		"username" : "angie",
+		"email" : "enxhidfdff",
+		"password" : "password",
+		"role" : "1",
+		"heartedProducts" : [
+
+		],
+		"following" : []
+	},
+		{
+		"id" : "2", 
+		"username" : "angie",
+		"email" : "enxhidfdff",
+		"password" : "password",
+		"role" : "1",		
+		"heartedProducts" : [
+			
+		],
+		"following" : []
+	},
+	
+		{
+		"id" : "3", 
+		"username" : "angie",
+		"email" : "enxhidfdff",
+		"password" : "password",
+		"role" : "1",
+		"heartedProducts" : [
+			
+		],
+		"following" : [1]
+	}
+],
+
+"roles" : [
+	{"id" : "1", "name" : "user"},
+	{"id" : "2", "name" : "affiliate"},
+	{"id" : "3", "name" : "admin"}
+],
+
+"products" : [
+	{"id" : "0", "link" : "//rcm-eu.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=angieleba-21&language=it_IT&o=29&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B0728F7RMF&linkId=3f32056857af0f12a4e55041228862a1", "discount": "10", "affiliate" : {
+		"id" : "1", 
+		"username" : "angie",
+		"email" : "enxhidfdff",
+		"password" : "password",
+		"role" : "1",		
+		"heartedProducts" : [
+			
+		],
+		"following" : []
+	}},
+	{"id" : "1", "link" : "//rcm-eu.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=angieleba-21&language=it_IT&o=29&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B0728F7RMF&linkId=3f32056857af0f12a4e55041228862a1", "discount": "0.1",  "affiliate" : {}},
+	{"id" : "2", "link" : "//rcm-eu.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=angieleba-21&language=it_IT&o=29&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B0728F7RMF&linkId=3f32056857af0f12a4e55041228862a1", "discount": "0.3", "affiliate" : {}},
+	{"id" : "3", "link" : "//rcm-eu.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=angieleba-21&language=it_IT&o=29&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B0728F7RMF&linkId=3f32056857af0f12a4e55041228862a1", "discount": "0.2", "affiliate" : {}}
+				
+]
+
+}

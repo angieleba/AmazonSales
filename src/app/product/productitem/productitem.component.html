@@ -1,0 +1,60 @@
+<ion-card>
+  <ion-item>
+    <ion-label>
+      <ion-button  icon-only item-left fill="clear" (click)="openUrl()">
+        <ion-icon slot="start" name="checkmark-outline"></ion-icon>
+      </ion-button>
+      <h3>{{product.affiliate.username}}</h3>
+      <p>Discount: {{product.discount | percent}}</p>
+    </ion-label>
+  </ion-item>
+  <ion-card-header>
+    <ion-card-title></ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-col center text-center>
+    </ion-col>
+    <ion-col center text-center>
+      <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//rcm-eu.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=angieleba-21&language=it_IT&o=29&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B07P9W1SK5&linkId=a976ff7c17c8cf0f78a8ccdc45ce9993">
+      </iframe> 
+    </ion-col>
+    <ion-col center text-center>
+    </ion-col>
+    
+  </ion-card-content>
+
+  <ion-footer>
+    <ion-row>
+      <ion-col center text-center>
+      </ion-col>
+      <ion-col center text-center>
+      </ion-col>
+      <ion-col center text-center>
+        <ion-button icon-only item-right fill="clear">
+          <ion-icon name="bookmark-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-footer>
+</ion-card>
+
+<!-- 
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          <ion-button  icon-only item-left fill="clear" (click)="openUrl()">
+            <ion-icon slot="start" name="checkmark-outline"></ion-icon>
+          </ion-button>
+          {{product.affiliate.username}}
+        </ion-card-title>
+        <ion-card-subtitle>Discount: {{product.discount | percent }}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//rcm-eu.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=angieleba-21&language=it_IT&o=29&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B07P9W1SK5&linkId=a976ff7c17c8cf0f78a8ccdc45ce9993">
+        </iframe>     
+      </ion-card-content>
+      <ion-button icon-only item-right fill="clear">
+        <ion-icon name="bookmark-outline" slot="end"></ion-icon>
+      </ion-button>
+    </ion-card>
+    -->

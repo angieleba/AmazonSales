@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "defaultProject": "app",
+  "defaultProject": "AmazonSales",
   "newProjectRoot": "projects",
   "projects": {
     "app": {
@@ -74,7 +74,9 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "app:build"
+            "browserTarget": "app:build",
+            "sslKey": "ssl/certificateAmazon.key",
+            "sslCert": "ssl/certificateAmazon.crt"
           },
           "configurations": {
             "production": {

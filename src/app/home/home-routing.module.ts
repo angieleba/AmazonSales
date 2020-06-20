@@ -1,11 +1,27 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomePage } from './home.page';
+import { LoginGuard } from '../login/login.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: HomePage,
+  },
+  {
+    path: 'my-profile', children : [
+      {
+        path : '',
+        loadChildren: () => import('../profile/my-profile/my-profile.module').then(m => m.MyProfilePageModule),
+        canLoad : [LoginGuard]
+      }
+    ]
+    
+  },
+  {
+    path: 'add-product',
+    loadChildren: () => import('../product/new-product/new-product.module').then(m => m.NewProductPageModule),
+    canLoad : [LoginGuard]
   }
 ];
 
