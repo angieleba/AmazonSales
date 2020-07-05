@@ -13,43 +13,15 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {MsalModule, MsalAngularConfiguration, MsalInterceptor, MSAL_CONFIG, MSAL_CONFIG_ANGULAR, MsalService} from '@azure/msal-angular';
 import { environment, B2CConfig, B2CAuthority } from 'src/environments/environment';
 import { Configuration } from 'msal/lib-commonjs/Configuration';
-
-export const protectedResourceMap: [string, string[]][] = [
-  ['https://graph.microsoft.com/v1.0/me', ['user.read']]
-];
-const isIE = window.navigator.userAgent.indexOf("MSIE ") > -1 || window.navigator.userAgent.indexOf("Trident/") > -1;
+import { msalConfig, loginRequest } from './configuration';
 
 function MSALConfigFactory(): Configuration {
-  return {
-    auth: {
-      clientId: 'b45c5952-b0ce-475e-b2d3-528cc8cb0be3',
-      authority: "https://login.microsoftonline.com/common/",
-      validateAuthority: true,
-      redirectUri: "http://localhost:8101/home",
-      postLogoutRedirectUri: "http://localhost:8101/login",
-      navigateToLoginRequestUrl: true,
-    },
-    cache: {
-      cacheLocation: "localStorage",
-      storeAuthStateInCookie: isIE, // set to true for IE 11
-    },
-  };
+  return msalConfig;
 }
 
 
 function MSALAngularConfigFactory(): MsalAngularConfiguration {
-  return {
-    popUp: !isIE,
-    consentScopes: [
-      "user.read",
-      "openid",
-      "profile",
-      "api://a88bb933-319c-41b5-9f04-eff36d985612/access_as_user"
-    ],
-    unprotectedResources: ["https://www.microsoft.com/en-us/"],
-    protectedResourceMap,
-    extraQueryParameters: {}
-  };
+return loginRequest;
 }
 
 @NgModule({

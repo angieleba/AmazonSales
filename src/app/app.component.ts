@@ -26,14 +26,10 @@ export class AppComponent {
   isIframe = false;
   ngOnInit() : void {
     this.isIframe = window !== window.parent && !window.opener;
-    this.loginService.checkoutAccount();
 
     this.broadcastService.subscribe('msal:loginSuccess', () => {
-      this.loginService.checkoutAccount();
-    });
 
-    this.loginService.handleRedirect();
-    this.loginService.addLogging();
+    });
   }
 
   initializeApp() {
@@ -45,6 +41,5 @@ export class AppComponent {
 
   logout() {
     this.loginService.logout();
-    this.router.navigateByUrl('/login');
   }
 }
