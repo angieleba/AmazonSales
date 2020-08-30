@@ -4,6 +4,8 @@ import { Subscription } from 'rxjs';
 import { HomeService } from './home.service';
 import { LoginService } from '../login/login.service';
 import { User } from '../login/user.model';
+import { ModalController } from '@ionic/angular';
+import { NewProductPage } from '../product/new-product/new-product.page';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +21,7 @@ export class HomePage implements OnInit, OnDestroy {
   products : Product [];
   constructor(
     private _homeService : HomeService, 
-    private _loginService : LoginService
+    public modalController: ModalController
     ) {
   }
 
@@ -37,6 +39,16 @@ export class HomePage implements OnInit, OnDestroy {
       });
   }
 
+  async openModal() {
+    const modal = await this.modalController.create({
+      component: NewProductPage,
+      // componentProps: {
+      //   "paramTitle": "Insert product affiliate link"
+      // }
+    });
+
+    return await modal.present();
+  }
   test() {
     window.open("https://ionicframework.com/docs/v3/api/components/toolbar/Toolbar/", "_system");
   }

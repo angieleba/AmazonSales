@@ -15,12 +15,12 @@ export class LoginService {
   user : Account | null;
 
   constructor(
-    private broadcastService: BroadcastService,
     private authService: MsalService,
     private router : Router
   ) {}
 
   login() {
+    const previousURL = document.referrer;
     const isIE =
       window.navigator.userAgent.indexOf("MSIE ") > -1 ||
       window.navigator.userAgent.indexOf("Trident/") > -1;
@@ -30,6 +30,7 @@ export class LoginService {
     } else {
       this.authService.loginPopup(loginRequest)
       .then(loginResponse => {
+        console.log("HELLO:", previousURL);
         console.log("id_token acquired at: " + new Date().toString());       
         if (this.authService.getAccount()) {
           console.log(this.authService.getAccount());
@@ -115,5 +116,5 @@ callApiWithAccessToken(endpoint, token) {
     }).catch(error => {
       console.log("Error calling the Web api:\n" + error);
     });
-}
+  }
 }

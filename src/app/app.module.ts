@@ -11,9 +11,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {MsalModule, MsalAngularConfiguration, MsalInterceptor, MSAL_CONFIG, MSAL_CONFIG_ANGULAR, MsalService} from '@azure/msal-angular';
-import { environment, B2CConfig, B2CAuthority } from 'src/environments/environment';
 import { Configuration } from 'msal/lib-commonjs/Configuration';
 import { msalConfig, loginRequest } from './configuration';
+import {StoreModule} from '@ngrx/store';
 
 function MSALConfigFactory(): Configuration {
   return msalConfig;
@@ -31,7 +31,8 @@ return loginRequest;
     IonicModule.forRoot(), 
     AppRoutingModule,
     HttpClientModule,
-    MsalModule
+    MsalModule,
+    StoreModule.forRoot({})
   ],
   providers: [
     StatusBar,

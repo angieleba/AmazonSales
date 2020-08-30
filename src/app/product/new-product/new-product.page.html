@@ -1,9 +1,26 @@
+<!-- my-modal.page.html -->
 <ion-header>
   <ion-toolbar>
-    <ion-title>newProduct</ion-title>
+    <ion-title>Insert new product affiliate link</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col text-center>
+        <ion-item>
+          <ion-label position="stacked">Product <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input required type="text" oninput="handleFirstNameValue(event)"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col text-center>
+        <ion-button (click)="ok()">Save</ion-button>
+        <ion-button (click)="cancel()">Cancel</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>

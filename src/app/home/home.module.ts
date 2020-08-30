@@ -6,7 +6,7 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { ProductitemComponent } from '../product/productitem/productitem.component';
-import { HttpClientModule } from '@angular/common/http';
+import { NewProductPageModule } from '../product/new-product/new-product.module';
 
 
 @NgModule({
@@ -16,7 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
     IonicModule,
     HomePageRoutingModule
   ],
-  exports : [],
   declarations: [HomePage, ProductitemComponent]
+
 })
 export class HomePageModule {}
