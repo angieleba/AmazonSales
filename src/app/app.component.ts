@@ -6,6 +6,9 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { LoginService } from './login/login.service';
 import { Router } from '@angular/router';
 import { BroadcastService } from '@azure/msal-angular';
+import { AppState } from './AppState';
+import { Store } from '@ngrx/store';
+import { LoginRequest } from './login/actions/login.actions';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +22,8 @@ export class AppComponent {
     private statusBar: StatusBar,
     private loginService : LoginService,
     private router : Router,
-    private broadcastService: BroadcastService
+    private broadcastService: BroadcastService,
+    private store : Store<AppState>
   ) {
     this.initializeApp();
   }
@@ -41,5 +45,9 @@ export class AppComponent {
 
   logout() {
     this.loginService.logout();
+  }
+
+  login() {
+    this.store.dispatch(new LoginRequest());
   }
 }

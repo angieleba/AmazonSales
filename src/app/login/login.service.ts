@@ -1,48 +1,41 @@
 import { Injectable } from "@angular/core";
-import { User } from "./user.model";
 import * as Msal from "msal";
-import { B2CConfig, B2CAuthority } from "src/environments/environment";
-import { BroadcastService, MsalService } from "@azure/msal-angular";
-import { Logger, CryptoUtils } from "msal";
 import { loginRequest, b2cPolicies, tokenRequest, apiConfig } from '../configuration';
-import { Router, ActivatedRoute } from '@angular/router';
+import { throwError, Observable, of } from 'rxjs';
+import { MsalService } from '@azure/msal-angular';
 
 @Injectable({
   providedIn: "root",
 })
-export class LoginService {
-  isUserAuthenticated = false;
-  user : Account | null;
 
+export class LoginService {
   constructor(
     private authService: MsalService,
-    private router : Router
   ) {}
 
-  login() {
-    const previousURL = document.referrer;
+
+  login() : Observable<Msal.Account>{
+    console.log("Entered login");
     const isIE =
       window.navigator.userAgent.indexOf("MSIE ") > -1 ||
       window.navigator.userAgent.indexOf("Trident/") > -1;
 
     if (isIE) {
       this.authService.loginRedirect();
+      return of(this.authService.getAccount());
     } else {
       this.authService.loginPopup(loginRequest)
       .then(loginResponse => {
-        console.log("HELLO:", previousURL);
+        debugger;
         console.log("id_token acquired at: " + new Date().toString());       
-        if (this.authService.getAccount()) {
-          console.log(this.authService.getAccount());
-          this.isUserAuthenticated = true;
-          this.passTokenToApi();
-          this.router.navigate(['/home']);
+        if (loginResponse.account) {
+          debugger;
+           
+        } else {
+          return throwError("No account found.");
         }
         
-    }).catch(error => {
-      this.isUserAuthenticated = false;
-      console.log(error);
-
+    }).catch(error => {      
       // Error handling
       if (error.errorMessage) {
         // Check for forgot password error
@@ -55,13 +48,14 @@ export class LoginService {
             })
         }
       }
+      return throwError("Error in login", error);
     });      
     }
+    return of(this.authService.getAccount());    
   }
 
 // Sign-out the user
 logout() {
-  this.isUserAuthenticated = false;
   // Removes all sessions, need to call AAD endpoint to do full logout
   this.authService.logout();
 }
@@ -69,6 +63,7 @@ logout() {
 checkoutAccount() {
   return this.authService.getAccount();
 }
+
 // Acquires and access token and then passes it to the API call
 passTokenToApi() {
   this.getTokenPopup(tokenRequest)

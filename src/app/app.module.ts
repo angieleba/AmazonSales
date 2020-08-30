@@ -13,7 +13,13 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {MsalModule, MsalAngularConfiguration, MsalInterceptor, MSAL_CONFIG, MSAL_CONFIG_ANGULAR, MsalService} from '@azure/msal-angular';
 import { Configuration } from 'msal/lib-commonjs/Configuration';
 import { msalConfig, loginRequest } from './configuration';
-import {StoreModule} from '@ngrx/store';
+import {StoreModule, StoreRootModule} from '@ngrx/store';
+import { environment } from 'src/environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+import { HomePageModule } from './home/home.module';
+import { LoginEffects } from './login/effects/login.effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { reducers, metaReducers } from './index.reducers';
 
 function MSALConfigFactory(): Configuration {
   return msalConfig;
@@ -32,7 +38,10 @@ return loginRequest;
     AppRoutingModule,
     HttpClientModule,
     MsalModule,
-    StoreModule.forRoot({})
+    HomePageModule,
+    StoreModule.forRoot(reducers, {metaReducers}),
+    EffectsModule.forRoot([LoginEffects]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [
     StatusBar,
