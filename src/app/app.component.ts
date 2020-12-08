@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 import { BroadcastService } from '@azure/msal-angular';
 import { AppState } from './AppState';
 import { Store } from '@ngrx/store';
-import { LoginRequest } from './login/actions/login.actions';
+import { UserIsLoggedin } from './login/reducers/loginLogout.reducers';
 
 @Component({
   selector: 'app-root',
@@ -28,11 +28,15 @@ export class AppComponent {
     this.initializeApp();
   }
   isIframe = false;
+  isLoggedIn : boolean;
+
   ngOnInit() : void {
     this.isIframe = window !== window.parent && !window.opener;
-
     this.broadcastService.subscribe('msal:loginSuccess', () => {
+    });
 
+    this.store.select(UserIsLoggedin).subscribe((s) => {
+      this.isLoggedIn = s;
     });
   }
 
@@ -45,9 +49,5 @@ export class AppComponent {
 
   logout() {
     this.loginService.logout();
-  }
-
-  login() {
-    this.store.dispatch(new LoginRequest());
   }
 }

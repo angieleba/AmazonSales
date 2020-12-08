@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomePage } from './home.page';
 import { MsalGuard } from '@azure/msal-angular';
 import { LoginGuard } from '../login/login.guard';
+import { NewProductComponent } from '../product/new-product/new-product.component';
+import { MyProfileComponent } from '../profile/my-profile/my-profile.component';
 
 const routes: Routes = [
   {
@@ -13,7 +15,7 @@ const routes: Routes = [
     path: 'my-profile', children : [
       {
         path : '',
-        loadChildren: () => import('../profile/my-profile/my-profile.module').then(m => m.MyProfilePageModule),
+        component: MyProfileComponent,
         canLoad : [LoginGuard]
       }
     ]
@@ -21,7 +23,7 @@ const routes: Routes = [
   },
   {
     path: 'add-product',
-    loadChildren: () => import('../product/new-product/new-product.module').then(m => m.NewProductPageModule),
+    component : NewProductComponent,
     canLoad : [LoginGuard]
   }
 ];

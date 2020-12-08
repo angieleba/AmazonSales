@@ -44,5 +44,4 @@ export class LogoutError implements Action {
     constructor(public error : string) {}
 }
 
-export type LoginActionsUnion = LoginRequest | LoginSuccess | LoginError;
-export type LogoutActionsUnion = LogoutRequest | LogoutSuccess | LogoutError;
+export type LoginActionsUnion = LoginRequest | LoginSuccess | LoginError | LogoutRequest | LogoutSuccess | LogoutError;

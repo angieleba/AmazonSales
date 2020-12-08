@@ -1,8 +1,7 @@
 import { User } from "../user.model";
 import { LoginActionTypes } from "../LoginActionTypes";
 import {
-  LoginActionsUnion,
-  LogoutActionsUnion,
+  LoginActionsUnion
 } from "../actions/login.actions";
 import { LoginStatuses } from "../LoginStatuses";
 import { LogoutStatuses } from "../LogoutStatuses";
@@ -38,7 +37,6 @@ export function loginReducer(
       };
 
     case LoginActionTypes.LoginSuccessful:
-      console.log("Reducer user => ", action.user);
       return {
         ...state,
         User: action.user,
@@ -48,6 +46,7 @@ export function loginReducer(
       };
 
     case LoginActionTypes.LoginError:
+      console.log(action.error);
       return {
         ...state,
         User: null,
@@ -55,6 +54,28 @@ export function loginReducer(
         LoginStatus: LoginStatuses.Failed,
         Error: action.error,
       };
+    case LoginActionTypes.LogoutRequest:
+      return {
+        ...state,
+        LogoutStatus: LogoutStatuses.InProgress
+      };
+
+    case LoginActionTypes.LogoutSuccessful:
+      console.log("enters logout success");
+      return {
+        User: null,
+        Error : "",
+        IsLoggedIn: false,
+        LogoutStatus: LogoutStatuses.Successful,
+        LoginStatus: LoginStatuses.None,
+      };
+  
+      case LoginActionTypes.LogoutError:
+        return {
+          ...state,
+          LogoutStatus: LogoutStatuses.Failed,
+          Error: action.error,
+        };
     default:
       return {
         ...state
@@ -62,47 +83,15 @@ export function loginReducer(
   }
 }
 
-export function logoutReducer(
-  state: LoginState = initialLoginState,
-  action: LogoutActionsUnion
-) {
-  switch (action.type) {
-    case LoginActionTypes.LogoutRequest:
-      return {
-        ...state,
-        LogoutStatus: LogoutStatuses.InProgress,
-      };
-
-    case LoginActionTypes.LogoutSuccessful:
-      return {
-        User: null,
-        IsLoggedIn: false,
-        LogoutStatus: LogoutStatuses.Successful,
-        LoginStatus: LoginStatuses.None,
-      };
-
-    case LoginActionTypes.LogoutError:
-      return {
-        ...state,
-        LogoutStatus: LogoutStatuses.Failed,
-        Error: action.error,
-      };
-    default: 
-    return {
-      ...state
-    }
-  }
-}
-
 export const getLoginState = createFeatureSelector<LoginState>('loginState');
-export const getIsLoggedIn = createSelector(
+export const UserIsLoggedin = createSelector(
   getLoginState,
-  state => state.IsLoggedIn
+  (state : LoginState) => state.IsLoggedIn
 );
 
-export const getUser = createSelector(
+export const GetUser = createSelector(
   getLoginState,
-  state => state.IsLoggedIn
+  state => state.User
 );
 
 

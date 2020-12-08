@@ -9,6 +9,7 @@ import { LoginService } from '../login.service';
 import { User } from '../user.model';
 import { Account } from 'msal';
 import { of } from 'rxjs';
+import { ProductListRequest } from 'src/app/home/actions/products.actions';
 
  @Injectable()
  export class LoginEffects {
@@ -19,9 +20,10 @@ import { of } from 'rxjs';
          ofType<LoginRequest>(LoginActionTypes.LoginRequest),
          mergeMap(() => this.loginService.login()
          .pipe(
-           map(account => {
-             return (new LoginSuccess(new User(account as Account)));
-           }),
+           mergeMap(account => [
+             new LoginSuccess(new User(account as Account)), 
+             new ProductListRequest()
+           ]),
            catchError((error) => of(new LoginError(error)))
          ))
 );

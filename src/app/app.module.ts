@@ -20,6 +20,8 @@ import { HomePageModule } from './home/home.module';
 import { LoginEffects } from './login/effects/login.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers, metaReducers } from './index.reducers';
+import { LogoutEffects } from './login/effects/logout.effects';
+import { ProductEffects } from './home/effects/products.effects';
 
 function MSALConfigFactory(): Configuration {
   return msalConfig;
@@ -40,7 +42,7 @@ return loginRequest;
     MsalModule,
     HomePageModule,
     StoreModule.forRoot(reducers, {metaReducers}),
-    EffectsModule.forRoot([LoginEffects]),
+    EffectsModule.forRoot([LoginEffects, LogoutEffects, ProductEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [
