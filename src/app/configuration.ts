@@ -8,7 +8,7 @@ export const apiConfig = {
     "https://amazonsalestest.onmicrosoft.com/api/Files.read",
     "https://amazonsalestest.onmicrosoft.com/api/Files.write",
   ],
-  webApi: "https://localhost:44380/api/posts",
+  productListApi: "https://localhost:44380/api/product",
 };
 
 export const b2cPolicies = {

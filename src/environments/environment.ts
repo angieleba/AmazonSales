@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  urlAPI : "http://localhost:3000"
+  urlAPI : "https://localhost:44380/api"
 };
 
 // const msalConfig = {

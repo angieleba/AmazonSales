@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { LoginGuard } from './login/login.guard';
-import { NewProductComponent } from './product/new-product/new-product.component';
-import { MyProfileComponent } from './profile/my-profile/my-profile.component';
+import { LoginComponent } from './login/login/login.component';
 
 const routes: Routes = [
   {
@@ -14,20 +11,7 @@ const routes: Routes = [
   },
   {
     path: '', redirectTo: 'home', pathMatch: 'full'
-  },
-  {
-    path: 'myProfile',
-   component: MyProfileComponent
-  },
-  {
-    path: 'addProduct',
-    component: NewProductComponent
   }
-  //,
-  // {
-  //   path: 'product-list',
-  //   loadChildren: () => import('').then( m => m.ProductListPageModule)
-  // }
 ];
 
 @NgModule({

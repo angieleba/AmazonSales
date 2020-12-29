@@ -3,24 +3,12 @@
     <ion-header>
       <ion-toolbar>
         <ion-title>
-          Amazon sales
+          SPA - ADB2C login
         </ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content>
       <ion-list>
-        <ion-menu-toggle>
-          <ion-item lines="none" button>
-            <ion-icon name="push-outline" slot="start"></ion-icon>
-            <ion-label>My products</ion-label>
-          </ion-item>
-        </ion-menu-toggle>
-        <ion-menu-toggle>
-          <ion-item lines="none" button>
-            <ion-icon name="bookmark-outline" slot="start"></ion-icon>
-            <ion-label>Bookmarked products</ion-label>
-          </ion-item>
-        </ion-menu-toggle>
         <ng-container *ngIf="isLoggedIn">
           <ion-menu-toggle>
             <ion-item lines="none" button (click)="logout()">

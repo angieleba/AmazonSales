@@ -8,7 +8,6 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { LoginComponent } from './login/login.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {MsalModule, MsalAngularConfiguration, MsalInterceptor, MSAL_CONFIG, MSAL_CONFIG_ANGULAR, MsalService} from '@azure/msal-angular';
 import { Configuration } from 'msal/lib-commonjs/Configuration';
@@ -17,11 +16,13 @@ import {StoreModule, StoreRootModule} from '@ngrx/store';
 import { environment } from 'src/environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { HomePageModule } from './home/home.module';
-import { LoginEffects } from './login/effects/login.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers, metaReducers } from './index.reducers';
-import { LogoutEffects } from './login/effects/logout.effects';
-import { ProductEffects } from './home/effects/products.effects';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login/login.component';
+import { LoginEffects } from './login/login-effect/login.effects';
+import { LogoutEffects } from './login/login-effect/logout.effects';
+import { ProductEffects } from './home/product-effect/products.effects';
 
 function MSALConfigFactory(): Configuration {
   return msalConfig;

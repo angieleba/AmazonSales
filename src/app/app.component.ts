@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
-
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { LoginService } from './login/login.service';
+import { LoginService } from './login/services/login.service';
 import { Router } from '@angular/router';
 import { BroadcastService } from '@azure/msal-angular';
 import { AppState } from './AppState';
 import { Store } from '@ngrx/store';
-import { UserIsLoggedin } from './login/reducers/loginLogout.reducers';
+import { UserIsLoggedin } from './login/login-effect/loginLogout.reducers';
 
 @Component({
   selector: 'app-root',

@@ -1,5 +1,6 @@
-import { LoginState, loginReducer } from './login/reducers/loginLogout.reducers';
-import { ProductState } from './home/reducers/products.reducers';
+
+import { ProductState } from './home/product-effect/products.reducers';
+import { LoginState } from './login/login-effect/loginLogout.reducers';
 
 export interface AppState {
     loginState : LoginState;

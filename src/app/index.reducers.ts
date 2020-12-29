@@ -1,8 +1,8 @@
-import { ActionReducerMap, MetaReducer, combineReducers } from '@ngrx/store';
+import { ActionReducerMap, MetaReducer } from '@ngrx/store';
 import { AppState } from 'src/app/AppState';
-import { loginReducer } from './login/reducers/loginLogout.reducers';
 import { environment } from 'src/environments/environment';
-import { productReducer } from './home/reducers/products.reducers';
+import { productReducer } from './home/product-effect/products.reducers';
+import { loginReducer } from './login/login-effect/loginLogout.reducers';
 
 export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : [];
 
